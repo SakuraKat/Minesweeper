@@ -69,6 +69,7 @@ func invert_flag(position: Vector2) -> void:
 				var index = mines_duplicate.find(position)
 				mines_duplicate.remove(index)
 	else:
+		number_of_flags -= 1
 		tile_map.set_cellv(position, IMPOSTER)
 		if check_mine(position):
 			if mines_duplicate.find(position) == -1:
