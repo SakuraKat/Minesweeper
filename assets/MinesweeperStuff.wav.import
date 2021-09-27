@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MinesweeperStuff.wav-461e5bfc8826e9944c59090f34628cd7.sample"
+
+[deps]
+
+source_file="res://assets/MinesweeperStuff.wav"
+dest_files=[ "res://.import/MinesweeperStuff.wav-461e5bfc8826e9944c59090f34628cd7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

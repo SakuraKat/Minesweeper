@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Background.png" type="Texture" id=1]
+[ext_resource path="res://TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/new_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Select.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/SelectHover.wav" type="AudioStream" id=5]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.643137 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.5
+margin_top = -320.0
+margin_right = 167.5
+margin_bottom = 320.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 335.0
+margin_bottom = 91.0
+text = "Minesweeper!"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+margin_top = 95.0
+margin_right = 335.0
+margin_bottom = 142.0
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 146.0
+margin_right = 335.0
+margin_bottom = 193.0
+text = "Quit"
+
+[node name="Instructions" type="Label" parent="VBoxContainer"]
+margin_top = 197.0
+margin_right = 335.0
+margin_bottom = 590.0
+text = "left click to do minesweeper stuff
+
+right click to flag
+you have 25 flags and 20 bombs
+
+after death click again to  get to this menu"
+align = 3
+autowrap = true
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="SelectHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="button_up" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/PlayButton" to="." method="_on__mouse_entered"]
+[connection signal="button_up" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on__mouse_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SelectHover.wav-ee691968ba489a1a5329e069e0244d46.sample"
+
+[deps]
+
+source_file="res://assets/SelectHover.wav"
+dest_files=[ "res://.import/SelectHover.wav-ee691968ba489a1a5329e069e0244d46.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

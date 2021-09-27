@@ -1,6 +1,9 @@
 extends Node2D
 
 onready var tile_map: TileMap = $TileMap
+onready var flag_sound: AudioStreamPlayer = $FlagSound
+onready var explosion_sound: AudioStreamPlayer = $ExplosionSound
+onready var minesweeper_stuff_sound: AudioStreamPlayer = $MinesweeperStuffSound
 
 const IMPOSTER: int = 12
 const EXPLODED_MINE: int = 11
@@ -9,9 +12,11 @@ const FLAG: int = 9
 var number_of_mines: int = 20
 var number_of_flags: int = -1
 var max_flags: int = 25
-var mines = []
-var mines_duplicate = []
-var numbers = []
+var mines: = []
+var mines_duplicate: = []
+var numbers: = []
+
+var game_over: bool
 
 func _ready() -> void:
 	randomize()
@@ -34,12 +39,18 @@ func _process(_delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	var current_position: Vector2 = (get_global_mouse_position()/ 32).floor()
 	
+	if game_over:
+		if Input.is_action_just_released("mouse_left_click") or Input.is_action_just_released("mouse_right_click"):
+			get_tree().change_scene("res://src/userInterface/TitleScreen.tscn")
+	
 	if Input.is_action_just_released("mouse_left_click"):
 		if check_mine(current_position):
 			game_over()
 		else: 
+			minesweeper_stuff_sound.play()
 			clear_adjacent_tiles(current_position)
 	if Input.is_action_just_released("mouse_right_click"):
+		flag_sound.play()
 		invert_flag(current_position)
 
 func add_mine() -> void:
@@ -97,8 +108,12 @@ func show_number(position: Vector2) -> void:
 	tile_map.set_cellv(position, current_position_value)
 
 func game_over() -> void:
+	explosion_sound.play()
+	
 	for mine in mines_duplicate:
 		tile_map.set_cellv(mine, EXPLODED_MINE)
+	
+	game_over = true
 
 func game_won() -> void:
-	print("won")
+	game_over = true
