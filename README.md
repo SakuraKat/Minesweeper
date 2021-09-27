@@ -1,7 +1,7 @@
 # Minesweeper
  Minesweeper using godot
  
- sound effects made from Bfxr
+ sound effects made using Bfxr
  
  assets made by me
  
